@@ -1,0 +1,164 @@
+@use "./styles/abstracts/variables";
+@use "./styles/abstracts/mixins";
+@use "./styles/base/reset";
+@use "./styles/components/button";
+@use "./styles/components/card";
+
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark *));
+
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #3b82f6;
+  --primary-foreground: #ffffff;
+  --card: #f3f4f6;
+  --card-foreground: #1f2937;
+  --border: #e5e7eb;
+  --button-background: #363636;
+  --icon-color: #ffffff;
+  --background-card: #e5e5e57d;
+  --Brown-color: #8f8072;
+
+  --font-open-sans: var(--font-open-sans);
+  --font-fira-code: var(--font-fira-code);
+  --font-geist-sans: var(--font-geist-sans);
+  --font-poppins: var(--font-poppins);
+
+  /* ✅ استخدم نفس الاسم الذي عرفته في layout.tsx */
+  --font-dancing-script: var(--font-dancing-script);
+
+  //  Linear Gradients
+  --gradient-primary: #{variables.$gradient-primary};
+  --gradient-primary-hover: #{variables.$gradient-primary-hover};
+  --gradient-primary-reverse: #{variables.$gradient-primary-reverse};
+  --gradient-primary-vertical: #{variables.$gradient-primary-vertical};
+  --gradient-sunset: #{variables.$gradient-sunset};
+  --gradient-ocean: #{variables.$gradient-ocean};
+  --gradient-mint: #{variables.$gradient-mint};
+}
+
+.dark {
+  --background: #171717;
+  --foreground: #ededed;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --card: #1f2937;
+  --card-foreground: #f3f4f6;
+  --border: #374151;
+  --button-background: #ffffff;
+  --icon-color: #171717;
+  --background-card: #dadada54;
+  --Brown-color: #c2ac98;
+  --font-poppins: var(--font-poppins);
+
+
+  //  Linear Gradients
+  --gradient-primary: #{variables.$gradient-primary};
+  --gradient-primary-hover: #{variables.$gradient-primary-hover};
+  --gradient-primary-reverse: #{variables.$gradient-primary-reverse};
+  --gradient-primary-vertical: #{variables.$gradient-primary-vertical};
+  --gradient-sunset: #{variables.$gradient-sunset};
+  --gradient-ocean: #{variables.$gradient-ocean};
+  --gradient-mint: #{variables.$gradient-mint};
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-gradient-primarycolor: var(--gradient-primary);
+  --color-gradient-primaryhover: var(--gradient-primary-hover);
+
+  --color-background-card: var(--background-card);
+  --color-Brown-color: var(--Brown-color);
+
+  --font-sans: var(--font-open-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: var(--font-fira-code), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-geist: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+
+  /* ✅ استخدم نفس الاسم هنا مع الخطوط البديلة */
+  --font-dancing-script: var(--font-dancing-script), "Dancing Script", "Great Vibes", "Brush Script MT", cursive, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-poppins: var(--font-poppins);
+
+  //  Linear Gradients
+  --background-image-gradient-primary: var(--gradient-primary);
+  --background-image-gradient-primary-hover: var(--gradient-primary-hover);
+
+  // --color-gradient-primary: var(--gradient-primary);
+  ---background-image-gradient-sunset: var(--gradient-sunset);
+  ---background-image-gradient-ocean: var(--gradient-ocean);
+  ---background-image-gradient-mint: var(--gradient-mint);
+
+  --breakpoint-llg: 1500px;
+  --breakpoint-mmd: 1300px;
+  --breakpoint-mamd: 1200px;
+  --breakpoint-mxxmd: 1100px;
+  --breakpoint-mxmd: 1000px;
+  --breakpoint-mxmdd: 900px;
+  --breakpoint-smd: 700px;
+  --breakpoint-ssmd: 600px;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  overflow: hidden;
+  max-height: 100vh !important;
+  // &.aside-open,
+  // &.modal-open {
+  //   overflow: hidden;
+  //   padding-right: var(--scrollbar-width, 0px);
+
+  //   header,
+  //   .fixed-scroll-up {
+  //     padding-right: var(--scrollbar-width, 0px);
+  //   }
+  // }
+}
+
+// .main-screen{
+
+// }
+
+
+
+.testimonials-swiper-wrapper,
+.packages-slider-wrapper {
+  .swiper-pagination-bullet {
+    background: var(--foreground) !important;
+    opacity: 0.2;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: var(--gradient-primary) !important;
+    opacity: 1;
+    width: 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+}
+
+.head {
+  font-family: var(--font-poppins), "Poppins", sans-serif;
+  // font-weight: 300;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}

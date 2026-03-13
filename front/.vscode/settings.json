@@ -1,0 +1,14 @@
+{
+    "tailwindCSS.experimental.configFile": "src/app/[locale]/globals.scss",
+"tailwindCSS.includeLanguages": {
+    "typescriptreact": "typescriptreact",
+    "javascript": "javascript",
+    "html": "html"
+},
+"tailwindCSS.emmetCompletions": true
+,
+    "editor.quickSuggestions": {
+        "strings": true
+    },
+		
+}

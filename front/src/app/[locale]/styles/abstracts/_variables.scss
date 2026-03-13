@@ -1,0 +1,22 @@
+// Gradient variables
+$gradient-primary: linear-gradient(to right, #b0a090, #8f8072);
+$background-card: #e5e5e57d;
+$gradient-primary-hover: linear-gradient(to right, #9a8b7a, #7f6f5e);
+
+$gradient-primary-reverse: linear-gradient(to left, #b0a090, #8f8072);
+$gradient-primary-vertical: linear-gradient(to bottom, #b0a090, #8f8072);
+
+// Gradients تانية للاستخدام
+$gradient-sunset: linear-gradient(to right, #ff7e5f, #feb47b);
+$gradient-ocean: linear-gradient(to right, #2c3e50, #3498db);
+$gradient-mint: linear-gradient(to right, #43cea2, #185a9d);
+
+// Mixins للـ gradients
+@mixin gradient-bg($direction: to right, $start: #b0a090, $end: #8f8072) {
+  background: linear-gradient($direction, $start, $end);
+}
+
+// استخدامات سريعة للـ gradients
+%gradient-primary {
+  background: $gradient-primary;
+}
