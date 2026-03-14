@@ -1,39 +1,18 @@
 "use client"
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
 import { Facebook, Instagram, Mail, Phone, MapPin, Send } from 'lucide-react'
 import Link from 'next/link';
-import Image from 'next/image';
-import Whitelogo from '@/public/logowhite.png';
-import Blacklogo from '@/public/logoblack.png';
-import { useDarkMode } from "@/hooks/useDarkMode";
 import Container from '../Container';
 
-const Footer = ({ logoData }: { logoData?: { imageLight: string, imageDark: string } | null }) => {
+const Footer = ({ logoData }: { logoData?: { image: string } | null }) => {
 	const t = useTranslations('Footer');
 	const navT = useTranslations('Navigation');
 	const locale = useLocale();
 	const isRtl = locale === 'ar';
 
-	const { isDark, isMounted } = useDarkMode();
-
-	const [dynamicLogoData] = useState<{ imageLight: string, imageDark: string } | null>(logoData || null);
-
-	const getLogoImage = () => {
-		if (!dynamicLogoData) return null;
-		if (!isMounted) return dynamicLogoData.imageLight;
-
-		if (isDark) {
-			return dynamicLogoData.imageDark;
-		}
-
-		return dynamicLogoData.imageLight;
-	};
-
-	const currentLogo = getLogoImage();
-
 	return (
-		<footer className="bg-foreground/87  border-t border-border/50 pt-16 pb-8" dir={isRtl ? 'rtl' : 'ltr'}>
+		<footer className="bg-foreground/87 border-t border-border/50 pt-16 pb-8" dir={isRtl ? 'rtl' : 'ltr'}>
 			<Container>
 				<div className="mx-auto">
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
@@ -41,46 +20,7 @@ const Footer = ({ logoData }: { logoData?: { imageLight: string, imageDark: stri
 						{/* Column 1: Brand & About */}
 						<div className="flex flex-col gap-6">
 							<Link href="/" className="text-[35px] font-bold font-dancing-script text-background w-[100px] h-[60px] flex items-center">
-								{dynamicLogoData && currentLogo ? (
-									<Image
-										src={currentLogo}
-										alt="mimophotograph"
-										width={100}
-										height={60}
-										className="object-contain w-auto h-full max-h-[60px]"
-										priority
-									/>
-								) : (
-									// Fallback to static logos until loaded
-									!isMounted ? (
-										<Image
-											src={Whitelogo}
-											alt="mimophotograph"
-											width={100}
-											height={60}
-											className="object-contain w-auto h-full max-h-[60px]"
-											priority
-										/>
-									) : (!isDark) ? ( // Light Mode -> bg-foreground is dark, text-background is white
-										<Image
-											src={Whitelogo}
-											alt="mimophotograph"
-											width={100}
-											height={60}
-											className="object-contain w-auto h-full max-h-[60px]"
-											priority
-										/>
-									) : ( // Dark Mode -> bg-foreground is light, text-background is black
-										<Image
-											src={Blacklogo}
-											alt="mimophotograph"
-											width={100}
-											height={60}
-											className="object-contain w-auto h-full max-h-[60px]"
-											priority
-										/>
-									)
-								)}
+								Wedding
 							</Link>
 							<p className="text-background leading-relaxed text-sm max-w-xs">
 								{t('aboutDesc')}

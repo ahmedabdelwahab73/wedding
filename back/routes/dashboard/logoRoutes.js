@@ -18,10 +18,10 @@ router.get('/', async (req, res) => {
 });
 
 // @route   POST /api/dashboard/logos
-router.post('/', upload.fields([{ name: 'imageLight', maxCount: 1 }, { name: 'imageDark', maxCount: 1 }]), async (req, res) => {
+router.post('/', upload.single('image'), async (req, res) => {
 	try {
-		if (!req.files || !req.files['imageLight'] || !req.files['imageDark']) {
-			return res.status(400).json({ message: 'Please upload both light and dark mode images' });
+		if (!req.file) {
+			return res.status(400).json({ message: 'Please upload a logo image' });
 		}
 
 		// Read active from body or default to 1 (active)
@@ -33,8 +33,7 @@ router.post('/', upload.fields([{ name: 'imageLight', maxCount: 1 }, { name: 'im
 		}
 
 		const logo = new Logo({
-			imageLight: req.files['imageLight'][0].path,
-			imageDark: req.files['imageDark'][0].path,
+			image: req.file.path,
 			active: isActive
 		});
 
@@ -90,8 +89,7 @@ router.delete('/:id', async (req, res) => {
 			}
 		};
 
-		await deleteImage(logo.imageLight);
-		await deleteImage(logo.imageDark);
+		await deleteImage(logo.image);
 
 		await logo.deleteOne();
 		res.json({ message: 'Logo deleted successfully' });

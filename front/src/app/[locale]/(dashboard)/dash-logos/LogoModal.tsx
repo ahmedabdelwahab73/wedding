@@ -14,23 +14,18 @@ type IProps = {
 }
 
 const LogoModal = ({ setModalOpen, editingLogo, formData, setFormData, handleSubmit }: IProps) => {
-	const fileInputLightRef = useRef<HTMLInputElement>(null);
-	const fileInputDarkRef = useRef<HTMLInputElement>(null);
+	const fileInputRef = useRef<HTMLInputElement>(null);
 
-	const [previewLight, setPreviewLight] = useState<string | null>(formData.imageLight || null);
-	const [previewDark, setPreviewDark] = useState<string | null>(formData.imageDark || null);
-	const [errors, setErrors] = useState<{ light?: string; dark?: string }>({});
+	const [preview, setPreview] = useState<string | null>(formData.image || null);
+	const [errors, setErrors] = useState<{ image?: string }>({});
 	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	const validateAndSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
-		const newErrors: { light?: string; dark?: string } = {};
+		const newErrors: { image?: string } = {};
 
-		if (!formData.imageLight) {
-			newErrors.light = 'يرجى اختيار صورة للوضع المضيء';
-		}
-		if (!formData.imageDark) {
-			newErrors.dark = 'يرجى اختيار صورة للوضع المظلم';
+		if (!formData.image) {
+			newErrors.image = 'يرجى اختيار صورة للوجو';
 		}
 
 		if (Object.keys(newErrors).length > 0) {
@@ -73,35 +68,21 @@ const LogoModal = ({ setModalOpen, editingLogo, formData, setFormData, handleSub
 	};
 
 	useEffect(() => {
-		if (typeof formData.imageLight === 'string' && formData.imageLight.startsWith('http')) {
-			setPreviewLight(formData.imageLight);
-		} else if (typeof formData.imageLight === 'string' && formData.imageLight.startsWith('/uploads')) {
-			setPreviewLight(`http://localhost:5000${formData.imageLight}`);
+		if (typeof formData.image === 'string' && formData.image.startsWith('http')) {
+			setPreview(formData.image);
+		} else if (typeof formData.image === 'string' && formData.image.startsWith('/uploads')) {
+			setPreview(`http://localhost:5000${formData.image}`);
 		}
+	}, [formData.image]);
 
-		if (typeof formData.imageDark === 'string' && formData.imageDark.startsWith('http')) {
-			setPreviewDark(formData.imageDark);
-		} else if (typeof formData.imageDark === 'string' && formData.imageDark.startsWith('/uploads')) {
-			setPreviewDark(`http://localhost:5000${formData.imageDark}`);
-		}
-	}, [formData.imageLight, formData.imageDark]);
-
-	const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>, type: 'light' | 'dark') => {
+	const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
 		const file = e.target.files?.[0];
 		if (file) {
-			if (type === 'light') {
-				setFormData({ ...formData, imageLight: file });
-				setErrors(prev => ({ ...prev, light: undefined }));
-				const reader = new FileReader();
-				reader.onloadend = () => setPreviewLight(reader.result as string);
-				reader.readAsDataURL(file);
-			} else {
-				setFormData({ ...formData, imageDark: file });
-				setErrors(prev => ({ ...prev, dark: undefined }));
-				const reader = new FileReader();
-				reader.onloadend = () => setPreviewDark(reader.result as string);
-				reader.readAsDataURL(file);
-			}
+			setFormData({ ...formData, image: file });
+			setErrors(prev => ({ ...prev, image: undefined }));
+			const reader = new FileReader();
+			reader.onloadend = () => setPreview(reader.result as string);
+			reader.readAsDataURL(file);
 		}
 	};
 
@@ -131,20 +112,20 @@ const LogoModal = ({ setModalOpen, editingLogo, formData, setFormData, handleSub
 				</div>
 
 				<form onSubmit={validateAndSubmit} className="p-8 space-y-5 text-right">
-					<div className="grid grid-cols-2 gap-4">
+					<div className="grid grid-cols-1 gap-4">
 						<div className="space-y-4">
-							<label className="text-xs font-black text-muted-foreground/80 mr-1 uppercase tracking-wider">لوجو الوضع المضيء (Light)</label>
+							<label className="text-xs font-black text-muted-foreground/80 mr-1 uppercase tracking-wider">اللوجو الثابت للموقع</label>
 							<div
-								onClick={() => fileInputLightRef.current?.click()}
+								onClick={() => fileInputRef.current?.click()}
 								className="relative group cursor-pointer"
 							>
 								{/* Changed background from bg-gray-100 to bg-gray-300 to show white logos better */}
-								<div className={`w-full aspect-video rounded-2xl border-2 border-dashed ${errors.light ? 'border-red-500 bg-red-50/50' : (previewLight ? 'border-primary/50' : 'border-border')} hover:border-primary transition-all overflow-hidden flex flex-col items-center justify-center bg-gray-300 dark:bg-gray-400`}>
-									{previewLight ? (
+								<div className={`w-full aspect-video rounded-2xl border-2 border-dashed ${errors.image ? 'border-red-500 bg-red-50/50' : (preview ? 'border-primary/50' : 'border-border')} hover:border-primary transition-all overflow-hidden flex flex-col items-center justify-center bg-gray-300 dark:bg-gray-400`}>
+									{preview ? (
 										<>
 											<Image
-												src={previewLight}
-												alt="Preview Light"
+												src={preview}
+												alt="Preview Logo"
 												width={200}
 												height={100}
 												className="w-full h-full object-contain p-4"
@@ -155,61 +136,19 @@ const LogoModal = ({ setModalOpen, editingLogo, formData, setFormData, handleSub
 											</div>
 										</>
 									) : (
-										<div className={`flex flex-col items-center gap-2 ${errors.light ? 'text-red-500' : 'text-gray-600'} group-hover:text-primary transition-colors`}>
+										<div className={`flex flex-col items-center gap-2 ${errors.image ? 'text-red-500' : 'text-gray-600'} group-hover:text-primary transition-colors`}>
 											<ImageIcon size={40} strokeWidth={1.5} />
-											<span className="text-xs font-bold text-center">اضغط لاختيار<br />صورة اللوجو المضيء</span>
+											<span className="text-xs font-bold text-center">اضغط لاختيار<br />صورة اللوجو</span>
 										</div>
 									)}
 								</div>
-								{errors.light && (
-									<p className="text-red-500 text-[10px] font-bold mt-2 pr-1">{errors.light}</p>
+								{errors.image && (
+									<p className="text-red-500 text-[10px] font-bold mt-2 pr-1">{errors.image}</p>
 								)}
 								<input
 									type="file"
-									ref={fileInputLightRef}
-									onChange={(e) => handleFileChange(e, 'light')}
-									accept="image/*"
-									className="hidden"
-								/>
-							</div>
-						</div>
-
-						<div className="space-y-4">
-							<label className="text-xs font-black text-muted-foreground/80 mr-1 uppercase tracking-wider">لوجو الوضع المظلم (Dark)</label>
-							<div
-								onClick={() => fileInputDarkRef.current?.click()}
-								className="relative group cursor-pointer"
-							>
-								{/* Changed background from bg-gray-900 to bg-gray-700 to show dark/black logos better */}
-								<div className={`w-full aspect-video rounded-2xl border-2 border-dashed ${errors.dark ? 'border-red-500 bg-red-50/50' : (previewDark ? 'border-primary/50' : 'border-border')} hover:border-primary transition-all overflow-hidden flex flex-col items-center justify-center bg-gray-700 dark:bg-gray-600`}>
-									{previewDark ? (
-										<>
-											<Image
-												src={previewDark}
-												alt="Preview Dark"
-												width={200}
-												height={100}
-												className="w-full h-full object-contain p-4"
-												unoptimized
-											/>
-											<div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-												<Upload className="text-white w-8 h-8" />
-											</div>
-										</>
-									) : (
-										<div className={`flex flex-col items-center gap-2 ${errors.dark ? 'text-red-500' : 'text-gray-300'} group-hover:text-primary transition-colors`}>
-											<ImageIcon size={40} strokeWidth={1.5} />
-											<span className="text-xs font-bold text-center">اضغط لاختيار<br />صورة اللوجو المظلم</span>
-										</div>
-									)}
-								</div>
-								{errors.dark && (
-									<p className="text-red-500 text-[10px] font-bold mt-2 pr-1">{errors.dark}</p>
-								)}
-								<input
-									type="file"
-									ref={fileInputDarkRef}
-									onChange={(e) => handleFileChange(e, 'dark')}
+									ref={fileInputRef}
+									onChange={handleFileChange}
 									accept="image/*"
 									className="hidden"
 								/>

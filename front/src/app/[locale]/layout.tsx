@@ -3,28 +3,14 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
-import { Open_Sans, Fira_Code, Dancing_Script, Poppins } from "next/font/google";
-import { ThemeWrapper } from "@/components/ThemeWrapper";
+import { Montserrat, Dancing_Script } from "next/font/google";
 import { cookies } from "next/headers";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import '@/app/[locale]/globals.scss';
-const openSans = Open_Sans({
-	variable: "--font-open-sans",
+const montserrat = Montserrat({
+	variable: "--font-montserrat",
 	subsets: ["latin"],
 	weight: ["300", "400", "500", "600", "700", "800"],
-	display: "swap",
-});
-
-const poppins = Poppins({
-	variable: "--font-poppins",
-	subsets: ["latin"],
-	weight: ["300", "400", "500", "600", "700"],
-	display: "swap",
-});
-
-const firaCode = Fira_Code({
-	variable: "--font-fira-code",
-	subsets: ["latin"],
 	display: "swap",
 });
 
@@ -34,6 +20,7 @@ const dancingScript = Dancing_Script({
 	display: "swap",
 });
 
+
 export function generateStaticParams() {
 	return routing.locales.map((locale) => ({ locale }));
 }
@@ -42,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 	const { locale } = await params;
 	const isAr = locale === 'ar';
 
-	const title = isAr ? 'ميمو فوتوغرافى' : 'Mimo photography';
+	const title = isAr ? 'زفاف' : 'wedding';
 	const description = isAr
 		? 'میمو فوتوغرافي - خدمات تصوير احترافية. حجز باقات التصوير بأفضل الجودات.'
 		: 'Mimo photography - Professional photography services. Book high quality photography packages.';
@@ -126,24 +113,14 @@ export default async function LocaleLayout({
 				/>
 			</head>
 			<body className={`
-        ${openSans.variable} 
-        ${firaCode.variable}
+        ${montserrat.variable} 
         ${dancingScript.variable} 
-        ${poppins.variable}
         antialiased font-sans
       `}>
 				<NextIntlClientProvider messages={messages}>
-					<ThemeWrapper
-						attribute="class"
-						defaultTheme="system"
-						enableSystem
-						themes={['light', 'dark', 'system']}
-						savedTheme={savedTheme}
-					>
 						{/* <main> */}
 						{children}
 						{/* </main> */}
-					</ThemeWrapper>
 				</NextIntlClientProvider>
 				<SpeedInsights />
 			</body>

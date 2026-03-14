@@ -23,10 +23,15 @@
   "Navigation": {
     "home": "Home",
     "about": "About",
-    "contact": "Contact",
+    "contact": "Contact us",
     "dashboard": "Dashboard",
-    "comment": "Comment",
-    "booking": "Booking"
+    "pricing": "pricing",
+    "booking": "Booking",
+    "services": "Services",
+    "photographer": "Photographers",
+    "makeup":"Makeup Artists",
+    "photographerDesc":"Capture your moments",
+    "makeupDesc":"Flawless beauty"
   },
   "ReviewModal": {
     "title": "Your Opinion Matters",
@@ -139,8 +144,8 @@
     "changesText": "We reserve the right to modify these terms at any time. Changes will be effective immediately upon posting to this website."
   },
   "Metadata": {
-    "title": "Mimo Photography",
-    "description": "The best photography studio in Egypt for wedding, engagement, graduation, and portrait photography with the highest quality to capture your happiest moments. Mimo photography capturing your best moments."
+    "title": "Wedding",
+    "description": "The best photography studio in Egypt for wedding, engagement, graduation, and portrait photography with the highest quality to capture your happiest moments. wedding capturing your best moments."
   },
   "Common": {
     "loading": "Loading beautiful moments..."

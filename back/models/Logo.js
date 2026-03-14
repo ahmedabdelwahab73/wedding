@@ -1,12 +1,7 @@
 const mongoose = require('mongoose');
 
 const logoSchema = new mongoose.Schema({
-	imageLight: {
-		type: String,
-		required: true,
-	},
-	
-	imageDark: {
+	image: {
 		type: String,
 		required: true,
 	},

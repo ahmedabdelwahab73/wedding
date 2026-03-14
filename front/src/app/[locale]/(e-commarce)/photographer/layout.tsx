@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
+import ScrollDownIndicator from "@/components/ScrollDownIndicator";
 import { EcommerceProvider } from "@/context/EcommerceContext";
-import MainHeader from "../../../components/e-commarce/mainHeader";
-import ScrollDownIndicator from "../../../components/ScrollDownIndicator";
-import Footer from "../../../components/Footer/Footer";
+import Aside from "@/components/e-commarce/aside";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
 	const resolvedParams = await params;
@@ -53,16 +54,16 @@ export default async function EcommerceLayout({
 	const logoData = await fetchLogo(resolvedParams.locale);
 
 	return (
-		<EcommerceProvider>
+		<>
 			<ScrollDownIndicator />
-			<MainHeader />
-			<main className="h-[100vh] mt-[75px] overflow-auto
-			 main-element flex flex-col">
+			<Aside logoData={logoData} />
+			<Header logoData={logoData} />
+			<main className="h-[100vh] overflow-auto main-element flex flex-col">
 				<div className="flex-1">
 					{children}
 				</div>
 				<Footer logoData={logoData} />
 			</main>
-		</EcommerceProvider>
+		</>
 	);
 }

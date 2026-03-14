@@ -9,8 +9,7 @@ import { useConfirm } from '../componanets/ConfirmModalContext'
 
 interface Logo {
 	_id: string;
-	imageLight: any;
-	imageDark: any;
+	image: any;
 	active: number;
 }
 
@@ -23,8 +22,7 @@ const LogoManagement = () => {
 	const [editingLogo, setEditingLogo] = useState<Logo | null>(null)
 	const [deletingId, setDeletingId] = useState<string | null>(null)
 	const [formData, setFormData] = useState<Omit<Logo, '_id'>>({
-		imageLight: '',
-		imageDark: '',
+		image: '',
 		active: 1
 	})
 
@@ -110,15 +108,13 @@ const LogoManagement = () => {
 		if (logo) {
 			setEditingLogo(logo)
 			setFormData({
-				imageLight: logo.imageLight || '',
-				imageDark: logo.imageDark || '',
+				image: logo.image || '',
 				active: logo.active !== undefined ? logo.active : 1
 			})
 		} else {
 			setEditingLogo(null)
 			setFormData({
-				imageLight: '',
-				imageDark: '',
+				image: '',
 				active: 1
 			})
 		}
@@ -135,11 +131,8 @@ const LogoManagement = () => {
 			bodyData.append('active', formData.active.toString());
 
 			// Only append image if it's a File (newly selected)
-			if (formData.imageLight && typeof formData.imageLight !== 'string') {
-				bodyData.append('imageLight', formData.imageLight);
-			}
-			if (formData.imageDark && typeof formData.imageDark !== 'string') {
-				bodyData.append('imageDark', formData.imageDark);
+			if (formData.image && typeof formData.image !== 'string') {
+				bodyData.append('image', formData.image);
 			}
 
 			const realMethod = 'POST';
@@ -202,8 +195,7 @@ const LogoManagement = () => {
 						<table className="w-full text-right">
 							<thead>
 								<tr className="bg-muted/30 border-b border-border text-muted-foreground text-[11px] uppercase tracking-[0.1em] font-black">
-									<th className="px-6 py-5">اللوجو المضيء (Light)</th>
-									<th className="px-6 py-5">اللوجو المظلم (Dark)</th>
+									<th className="px-6 py-5">صورة اللوجو</th>
 									<th className="px-6 py-5 text-center">الحالة</th>
 									<th className="px-6 py-5 text-center">الإجراءات</th>
 								</tr>
@@ -214,17 +206,8 @@ const LogoManagement = () => {
 										<td className="px-6 py-5">
 											<div className="relative w-24 h-14 rounded-xl overflow-hidden shadow-sm group-hover:scale-105 transition-transform duration-300 bg-gray-300 p-2 flex items-center justify-center border border-border">
 												<img
-													src={logo.imageLight?.startsWith('/uploads') ? `${apiUrl}${logo.imageLight}` : logo.imageLight}
-													alt="Light Logo"
-													className="w-full h-full object-contain"
-												/>
-											</div>
-										</td>
-										<td className="px-6 py-5">
-											<div className="relative w-24 h-14 rounded-xl overflow-hidden shadow-sm group-hover:scale-105 transition-transform duration-300 bg-gray-700 p-2 flex items-center justify-center border border-gray-700">
-												<img
-													src={logo.imageDark?.startsWith('/uploads') ? `${apiUrl}${logo.imageDark}` : logo.imageDark}
-													alt="Dark Logo"
+													src={logo.image?.startsWith('/uploads') ? `${apiUrl}${logo.image}` : logo.image}
+													alt="Logo"
 													className="w-full h-full object-contain"
 												/>
 											</div>
@@ -262,7 +245,7 @@ const LogoManagement = () => {
 									</tr>
 								)) : (
 									<tr>
-										<td colSpan={4} className="py-20 text-center">
+										<td colSpan={3} className="py-20 text-center">
 											<div className="flex flex-col items-center justify-center opacity-40">
 												<ImageIcon size={48} className="mb-4 text-muted-foreground" />
 												<p className="font-bold">لا توجد بيانات حالياً</p>

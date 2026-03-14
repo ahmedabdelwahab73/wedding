@@ -10,33 +10,15 @@ import Whitelogo from '@/public/logowhite.png';
 import Blacklogo from '@/public/logoblack.png';
 import ReviewModal from '@/components/ReviewModal/ReviewModal';
 
-const Aside = ({ logoData }: { logoData?: { imageLight: string, imageDark: string } | null }) => {
+const Aside = ({ logoData }: { logoData?: { image: string } | null }) => {
 	const { isAsideOpen, toggleAside } = useAside();
 	const t = useTranslations('Navigation');
 	const locale = useLocale();
 	const isRtl = locale === 'ar';
-	const { resolvedTheme } = useTheme();
 	const [mounted, setMounted] = useState(false);
 	const [isReviewOpen, setIsReviewOpen] = useState(false);
 
-	const [dynamicLogoData] = useState<{ imageLight: string, imageDark: string } | null>(logoData || null);
-
-	React.useEffect(() => {
-		setMounted(true);
-	}, []);
-
-	const getLogoImage = () => {
-		if (!dynamicLogoData) return null;
-		if (!mounted) return dynamicLogoData.imageLight;
-
-		if (resolvedTheme === 'dark') {
-			return dynamicLogoData.imageLight;
-		}
-
-		return dynamicLogoData.imageDark;
-	};
-
-	const currentLogo = getLogoImage();
+	const currentLogo = logoData?.image || null;
 
 	// Scroll lock with layout shift compensation
 	React.useEffect(() => {
@@ -77,7 +59,7 @@ const Aside = ({ logoData }: { logoData?: { imageLight: string, imageDark: strin
 					{/* Header Section */}
 					<div className="flex items-center justify-between mb-10 px-4">
 						<Link href="/" className="text-4xl font-bold font-dancing-script text-foreground w-[100px] h-[60px] flex items-center justify-center relative">
-							{dynamicLogoData && currentLogo ? (
+							{currentLogo ? (
 								<Image
 									src={currentLogo}
 									alt="mimophotograph"
@@ -87,30 +69,7 @@ const Aside = ({ logoData }: { logoData?: { imageLight: string, imageDark: strin
 									priority
 								/>
 							) : (
-								<>
-									{
-										mounted && resolvedTheme === 'dark' &&
-										<Image
-											src={Whitelogo}
-											alt="mimophotograph"
-											width={100}
-											height={60}
-											className="object-contain w-auto h-full max-h-[60px]"
-											priority
-										/>
-									}
-									{
-										mounted && resolvedTheme === 'light' &&
-										<Image
-											src={Blacklogo}
-											alt="mimophotograph"
-											width={100}
-											height={60}
-											className="object-contain w-auto h-full max-h-[60px]"
-											priority
-										/>
-									}
-								</>
+								"Wedding"
 							)}
 						</Link>
 						<button
