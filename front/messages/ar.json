@@ -32,7 +32,9 @@
     "photographer":"المصورين",
     "makeup":"خبراء التجميل",
     "photographerDesc":"خلّد لحظاتك",
-    "makeupDesc":"إطلالة مثالية"
+    "makeupDesc":"إطلالة مثالية",
+    "comment": "رأيك يهمنا",
+    "signin":"تسجيل دخول"
   },
   "ReviewModal": {
     "title": "رأيك يهمنا",
@@ -67,7 +69,50 @@
     "usernameRequired": "يجب إدخال اسم المستخدم",
     "passwordRequired": "يجب إدخال كلمة المرور",
     "welcomeBack": "مرحباً بك مجدداً!",
-    "loginDescription": "من فضلك قم بتسجيل الدخول للوصول إلى لوحة التحكم الخاصة بك."
+    "loginDescription": "من فضلك قم بتسجيل الدخول للوصول إلى لوحة التحكم الخاصة بك.",
+    "createAccount": "إنشاء حساب جديد",
+    "signupDesc": "انضم إلينا لتوثيق أروع لحظاتك.",
+    "referral": "كود الإحالة (اختياري)",
+    "referralPlaceholder": "مثال: REF123",
+    "firstName": "الاسم الأول",
+    "firstNamePlaceholder": "أحمد",
+    "lastName": "الاسم الأخير",
+    "lastNamePlaceholder": "محمد",
+    "businessName": "اسم العمل",
+    "businessPlaceholder": "اسم شركتك",
+    "email": "البريد الإلكتروني",
+    "emailPlaceholder": "hello@example.com",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "serviceRequired": "الخدمة المطلوبة",
+    "selectService": "اختر خدمة...",
+    "photographer": "مصور",
+    "makeupArtist": "ميكب ارتيست",
+    "client": "عميل",
+    "acceptTerms": "أوافق على ",
+    "termsAndConditions": "الشروط والأحكام",
+    "signup": "إنشاء حساب",
+    "continueWith": "أو سجل عبر",
+    "signupGoogle": "إنشاء حساب بواسطة جوجل",
+    "alreadyAccount": "لديك حساب بالفعل؟ ",
+    "signInLink": "تسجيل الدخول",
+    "requiredField": "هذا الحقل مطلوب",
+    "invalidEmail": "عنوان البريد الإلكتروني غير صالح. يجب أن يكون @gmail.com",
+    "passwordTooShort": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",
+    "passwordMismatch": "كلمتي المرور غير متطابقتين",
+    "signupSuccess": "تم إنشاء الحساب بنجاح! يتم تحويلك الآن...",
+    "signupError": "حدث خطأ أثناء إنشاء الحساب. يرجى المحاولة مرة أخرى.",
+    "emailExists": "هذا البريد الإلكتروني مسجل بالفعل",
+    "forgotPassword": "هل نسيت كلمة المرور؟",
+    "loginTitle": "مرحباً بك مجدداً",
+    "loginSubTitle": "أدخل بياناتك للوصول إلى حسابك",
+    "loginBtn": "تسجيل الدخول",
+    "completeProfile": "إكمال بيانات العمل",
+    "confirm": "تأكيد",
+    "cancel": "إلغاء",
+    "businessNameRequired": "اسم العمل مطلوب",
+    "welcomeToWedding": "مرحباً بكم في ويدينج",
+    "loading":"تحميل...",
+    "loginGoogle":"تسجيل الدخول بواسطة جوجل"  
   },
   "Booking": {
     "title": "تفاصيل الحجز",
@@ -150,5 +195,21 @@
   },
   "Common": {
     "loading": "جاري تحميل اللحظات الجميلة..."
+  },
+  "Banner": {
+    "badge": "التصوير والمكياج",
+    "capture": "نوثق",
+    "moments": "اللحظات.",
+    "enhance": "نبرز",
+    "beauty": "الجمال.",
+    "description": "نقدّم خدمات تصوير احترافي ومكياج لإبراز جمالك وتوثيق أجمل لحظات يومك المميز.",
+    "startnow": "ابدأ الآن",
+    "dashboard": "لوحة التحكم"
+  },
+  "UserMenu": {
+    "profile": "الملف الشخصي",
+    "billing": "الفواتير والاشتراكات",
+    "refer": "أحِل صديقاً",
+    "logout": "تسجيل الخروج"
   }
 }

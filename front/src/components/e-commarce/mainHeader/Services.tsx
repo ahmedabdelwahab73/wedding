@@ -8,7 +8,7 @@ import DropDown from '../../DropDown/DropDown';
 const ServicesDropDown = () => {
 	const t = useTranslations('Navigation');
 	return (
-		<div className="relative group h-full flex items-center bg-red-100 cursor-pointer">
+		<div className="relative group h-full flex items-center cursor-pointer">
 			<DropDown title={t('services')}
 				IconBtn={<ChevronDown size={14}
 					className="transition-transform duration-300 group-hover:rotate-180" />}>

@@ -7,6 +7,8 @@ import { Montserrat, Dancing_Script } from "next/font/google";
 import { cookies } from "next/headers";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import '@/app/[locale]/globals.scss';
+import StoreProvider from '@/components/providers/StoreProvider';
+
 const montserrat = Montserrat({
 	variable: "--font-montserrat",
 	subsets: ["latin"],
@@ -64,6 +66,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 	};
 }
 
+
 export default async function LocaleLayout({
 	children,
 	params
@@ -118,9 +121,9 @@ export default async function LocaleLayout({
         antialiased font-sans
       `}>
 				<NextIntlClientProvider messages={messages}>
-						{/* <main> */}
+					<StoreProvider>
 						{children}
-						{/* </main> */}
+					</StoreProvider>
 				</NextIntlClientProvider>
 				<SpeedInsights />
 			</body>

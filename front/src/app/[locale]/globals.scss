@@ -23,6 +23,15 @@
   --icon-color: #ffffff;
   --background-card: #e5e5e57d;
   --Brown-color: #8f8072;
+  --cream: #FDFBF9;
+  --coffee-100: #e6d5c3;
+  --coffee-200: #d4c5b9;
+  --coffee-300: #8B6B52;
+  --coffee-400: #7A5C43;
+  --coffee-500: #6B5A4E;
+  --coffee-600: #5C4535;
+  --coffee-700: #433226;
+  --coffee-800: #3E3129;
 
   --font-montserrat: var(--font-montserrat);
   --font-dancing-script: var(--font-dancing-script);
@@ -53,6 +62,15 @@
 
   --color-background-card: var(--background-card);
   --color-Brown-color: var(--Brown-color);
+  --color-cream: var(--cream);
+  --color-coffee-100: var(--coffee-100);
+  --color-coffee-200: var(--coffee-200);
+  --color-coffee-300: var(--coffee-300);
+  --color-coffee-400: var(--coffee-400);
+  --color-coffee-500: var(--coffee-500);
+  --color-coffee-600: var(--coffee-600);
+  --color-coffee-700: var(--coffee-700);
+  --color-coffee-800: var(--coffee-800);
 
   --font-sans: var(--font-montserrat), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-dancing-script: var(--font-dancing-script), "Dancing Script", "Great Vibes", "Brush Script MT", cursive, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -83,25 +101,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
-  overflow: hidden;
-  max-height: 100vh !important;
-  // &.aside-open,
-  // &.modal-open {
-  //   overflow: hidden;
-  //   padding-right: var(--scrollbar-width, 0px);
-
-  //   header,
-  //   .fixed-scroll-up {
-  //     padding-right: var(--scrollbar-width, 0px);
-  //   }
-  // }
 }
-
-// .main-screen{
-
-// }
-
-
 
 .testimonials-swiper-wrapper,
 .packages-slider-wrapper {
@@ -121,7 +121,6 @@ body {
 
 .head {
   font-family: var(--font-poppins), "Poppins", sans-serif;
-  // font-weight: 300;
 }
 
 @keyframes shimmer {

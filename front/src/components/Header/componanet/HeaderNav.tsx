@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ServicesDropDown from '../../e-commarce/mainHeader/Services';
 
 interface IProps {
 	LinksData: { id: number, title: string, url: string }[];
@@ -19,6 +20,7 @@ const HeaderNav = ({ LinksData }: IProps) => {
 						</Link>
 					</li>
 				))}
+				<ServicesDropDown />
 			</ul>
 		</nav>
 	)

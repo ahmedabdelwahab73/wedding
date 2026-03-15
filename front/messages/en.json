@@ -31,7 +31,9 @@
     "photographer": "Photographers",
     "makeup":"Makeup Artists",
     "photographerDesc":"Capture your moments",
-    "makeupDesc":"Flawless beauty"
+    "makeupDesc":"Flawless beauty",
+    "comment": "Leave a Review",
+    "signin":"Sign In"
   },
   "ReviewModal": {
     "title": "Your Opinion Matters",
@@ -66,7 +68,50 @@
     "usernameRequired": "Username is required",
     "passwordRequired": "Password is required",
     "welcomeBack": "Welcome Back!",
-    "loginDescription": "Please login to access your dashboard management."
+    "loginDescription": "Please login to access your dashboard management.",
+    "createAccount": "Create an Account",
+    "signupDesc": "Join us to book your unforgettable moments.",
+    "referral": "Referral Code (Optional)",
+    "referralPlaceholder": "e.g. REF123",
+    "firstName": "First Name",
+    "firstNamePlaceholder": "John",
+    "lastName": "Last Name",
+    "lastNamePlaceholder": "Doe",
+    "businessName": "Business Name",
+    "businessPlaceholder": "Your Company Name",
+    "email": "Email Address",
+    "emailPlaceholder": "hello@example.com",
+    "confirmPassword": "Confirm Password",
+    "serviceRequired": "Service Required",
+    "selectService": "Select a service...",
+    "photographer": "Photographer",
+    "makeupArtist": "Makeup Artist",
+    "client": "Client",
+    "acceptTerms": "I accept the",
+    "termsAndConditions": "Terms and Conditions",
+    "signup": "Sign Up",
+    "continueWith": "or continue with",
+    "signupGoogle": "Sign up with Google",
+    "alreadyAccount": "Already have an account? ",
+    "signInLink": "Sign in",
+    "requiredField": "This field is required",
+    "invalidEmail": "Must be a valid @gmail.com address",
+    "passwordTooShort": "Password must be at least 6 characters",
+    "passwordMismatch": "Passwords do not match",
+    "signupSuccess": "Account created successfully! Redirecting...",
+    "signupError": "An error occurred during sign up. Please try again.",
+    "emailExists": "This email is already registered",
+    "forgotPassword": "Forgot password?",
+    "loginTitle": "Welcome Back",
+    "loginSubTitle": "Enter your credentials to access your account",
+    "loginBtn": "Login",
+    "completeProfile": "Complete Business Profile",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "businessNameRequired": "Business Name is required",
+    "welcomeToWedding": "Welcome to Wedding",
+    "loading":"loading...",
+    "loginGoogle":"login with google"
   },
   "Booking": {
     "title": "Booking Details",
@@ -149,5 +194,21 @@
   },
   "Common": {
     "loading": "Loading beautiful moments..."
+  },
+  "Banner": {
+    "badge": "Photography & Makeup",
+    "capture": "Capture",
+    "moments": "Moments.",
+    "enhance": "Enhance",
+    "beauty": "Beauty.",
+    "description": "Professional photography and makeup to highlight your beauty and capture your special moments.",
+    "startnow": "Start Now",
+    "dashboard": "Dashboard"
+  },
+  "UserMenu": {
+    "profile": "Profile",
+    "billing": "Billing & Subscription",
+    "refer": "Refer a friend",
+    "logout": "Log out"
   }
 }

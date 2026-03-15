@@ -1,9 +1,9 @@
 "use client"
-import React from 'react'
-import Container from '@/components/Container'
-import { useTranslations } from 'next-intl'
-import HeadingTitle from '../componanets/HeadingTitle'
-import { FileText, Camera, Copyright, AlertTriangle, RefreshCw } from 'lucide-react'
+import React from 'react';
+import Container from '@/components/Container';
+import { useTranslations } from 'next-intl';
+import { FileText, Camera, Copyright, AlertTriangle, RefreshCw } from 'lucide-react';
+import HeadingTitle from '../photographer/componanets/HeadingTitle';
 
 const TermsPage = () => {
 	const t = useTranslations('Terms')

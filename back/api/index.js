@@ -80,6 +80,7 @@ app.use('/api/partners', require('../routes/partnerRoutes'));
 app.use('/api/custom-packages', require('../routes/customPackageRoutes'));
 app.use('/api/logos', require('../routes/logoRoutes'));
 app.use('/api/custom-package-images', require('../routes/home/customPackageImageRoutes'));
+app.use('/api/members', require('../routes/memberRoutes'));
 
 // =============================================
 // PROTECTED ROUTES
